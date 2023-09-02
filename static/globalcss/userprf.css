@@ -1,0 +1,41 @@
+#myprofile-heading {
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-top: -2rem;
+}
+
+input {
+  width: 20rem;
+  padding: 0.2rem;
+  background: transparent;
+  border: none;
+  border-bottom: rgb(86, 103, 95) solid 4px;
+  margin-bottom: 1rem;
+  outline: none;
+  color: rgb(86, 103, 95);
+  font-size: 20px;
+}
+input[type="text"],
+input[type="email"] {
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.user-name input[type="text"] {
+  font-size: 24px;
+  text-transform: uppercase;
+}
+.user-info input[type="text"] {
+  text-transform: uppercase;
+}
+label,
+label {
+  color: rgb(86, 103, 95);
+  margin: 0.2rem auto;
+}
+form div {
+  margin-top: 0.4rem;
+}
+form {
+  margin-top: 0.5rem;
+}

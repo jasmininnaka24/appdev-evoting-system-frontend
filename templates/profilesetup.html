@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% load static %}
+    <link
+      rel="shortcut icon"
+      href="{% static '../static/imgs/logo.png' %}"
+      type="image/x-icon"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static '../static/voterstyle/cssvtr/prfsetup.css' %}"
+    />
+    <title>E-Voting System</title>
+  </head>
+  <body>
+    {% include 'navbarvtr.html' %}
+    <div class="container">
+      <main>
+        <div class="row">
+          <div class="col-12 d-md-flex align-items-center">
+            <h1 class="display-5 txt-green" id="myprofile-heading">
+              My Profile
+            </h1>
+
+            <span class="hidden rounded-pill" id="successful">
+              Successfully saved
+              <span id="check" class="rounded-pill">✓</span>
+            </span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 d-flex justify-content-center align-items-center">
+            <img
+              src="{% static '../static/imgs/jennie.jpg' %}"
+              alt="User photo"
+              style="
+                width: 10rem;
+                height: 10rem;
+                border: #555 10px double;
+                object-fit: cover;
+              "
+              class="rounded-circle"
+            />
+          </div>
+          <div
+            class="col-12 d-flex justify-content-center align-items-center mt-3"
+          >
+            <label
+              for="profilephoto"
+              style="
+                background: rgb(211, 213, 212);
+                color: #555;
+                padding: 0.5rem 1rem;
+                cursor: pointer;
+              "
+              class="rounded"
+              >Choose your profile photo</label
+            ><br />
+            <input
+              type="file"
+              class="user-photo-inp"
+              name="profilephoto"
+              id="profilephoto"
+              value=""
+              accept="image/*"
+              required
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <form
+              class="text-start px-5 d-flex flex-column justify-content-between align-items-center mb-4"
+              id="user-profile-form"
+            >
+              <div class="user-name">
+                <input
+                  type="text"
+                  name="username"
+                  id="username"
+                  value=""
+                  placeholder="Enter your name"
+                  class="text-center"
+                  required
+                />
+              </div>
+              <div class="user-id text-center">
+                <input
+                  type="text"
+                  name="userid"
+                  id="userid"
+                  value=""
+                  class="text-center"
+                  placeholder="                   e.g. 2020-10001            🖊️"
+                  required
+                /><br />
+                <label for="userid">Student ID</label>
+              </div>
+              <div class="user-info text-center">
+                <input
+                  type="text"
+                  name="userinfo"
+                  id="userinfo"
+                  value=""
+                  class="text-center"
+                  placeholder="                        e.g. BSIT-3A               🖊️"
+                  required
+                /><br />
+                <label for="userinfo">Course, Year, and Section</label>
+              </div>
+              <div class="user-email text-center">
+                <input
+                  type="email"
+                  name="useremail"
+                  id="useremail"
+                  value="abc2020@wmsu.edu.ph"
+                  class="text-center"
+                  readonly
+                /><br />
+                <label for="useremail">WMSU Email</label>
+              </div>
+
+              <div
+                id="btn-profile-save"
+                class="btn bg-greenn text-decoration-none px-5 py-2 mt-3 rounded-pill"
+                style="font-weight: 700"
+              >
+                SAVE
+              </div>
+            </form>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="{% static '../static/globaljs/s' %}"></script>
+    <script src="../static/voterstyle/jsvtr/voterprfsetup.js"></script>
+  </body>
+</html>

@@ -1,0 +1,462 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% load static %}
+    <link
+      rel="shortcut icon"
+      href="{% static '../static/imgs/logo.png' %}"
+      type="image/x-icon"
+    />
+    <title>E-Voting System</title>
+    <style>
+      .max-width {
+        max-width: 80%;
+      }
+      .border-radius {
+        border-radius: 25px;
+        width: 30rem;
+        height: 4.2rem;
+        max-width: 90%;
+      }
+      .box {
+        background: rgb(182, 204, 195);
+        color: rgb(74, 93, 85);
+        line-height: 1;
+        font-weight: bold;
+      }
+      .plist {
+        opacity: 0.5;
+      }
+      .position,
+      .cand-name {
+        text-transform: uppercase;
+      }
+      .cand-name {
+        /* letter-spacing: 2px; */
+        font-weight: bold;
+      }
+      .user-img {
+        width: 5.5rem;
+        /* margin-left: -0.5rem; */
+        /* border: #d5e9e0 5px double; */
+        object-fit: cover;
+      }
+      .position {
+        font-size: 1rem;
+        font-weight: bold;
+      }
+      .votes {
+        padding-right: 1.8rem;
+        padding-top: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main
+      class="container d-flex flex-column align-items-center justify-content-center mb-5"
+    >
+      <section class="my-3 mt-5">
+        <h1
+          class="display-6 text-center mb-4 txt-green"
+          style="font-weight: bold"
+        >
+          Mayor
+        </h1>
+        <div class="d-flex flex-wrap justify-content-center gap-4">
+          <section
+            class="d-flex align-items-center justify-content-between border-radius box my-1"
+          >
+            <div class="d-flex align-items-center gap-2 candidate">
+              <img
+                class="user-img rounded-circle"
+                src="../static/imgs/user.png"
+                alt=""
+              />
+              <div class="text-md-start text-center text-lg-start">
+                <h3 class="m-0 cand-name">Candidate 1</h3>
+                <p class="m-0 plist"><i>Partylist</i></p>
+              </div>
+            </div>
+            <p class="votes">100 votes</p>
+          </section>
+
+          <section
+            class="d-flex align-items-center justify-content-between border-radius box my-1"
+          >
+            <div class="d-flex align-items-center gap-2 candidate">
+              <img
+                class="user-img rounded-circle"
+                src="../static/imgs/user.png"
+                alt=""
+              />
+              <div class="text-md-start text-center text-lg-start">
+                <h3 class="m-0 cand-name">Candidate 1</h3>
+                <p class="m-0 plist"><i>Partylist</i></p>
+              </div>
+            </div>
+            <p class="votes">100 votes</p>
+          </section>
+
+          <section
+            class="d-flex align-items-center justify-content-between border-radius box my-1"
+          >
+            <div class="d-flex align-items-center gap-2 candidate">
+              <img
+                class="user-img rounded-circle"
+                src="../static/imgs/user.png"
+                alt=""
+              />
+              <div class="text-md-start text-center text-lg-start">
+                <h3 class="m-0 cand-name">Candidate 1</h3>
+                <p class="m-0 plist"><i>Partylist</i></p>
+              </div>
+            </div>
+            <p class="votes">100 votes</p>
+          </section>
+
+          <section
+            class="d-flex align-items-center justify-content-between border-radius box my-1"
+          >
+            <div class="d-flex align-items-center gap-2 candidate">
+              <img
+                class="user-img rounded-circle"
+                src="../static/imgs/user.png"
+                alt=""
+              />
+              <div class="text-md-start text-center text-lg-start">
+                <h3 class="m-0 cand-name">Candidate 1</h3>
+                <p class="m-0 plist"><i>Partylist</i></p>
+              </div>
+            </div>
+            <p class="votes">100 votes</p>
+          </section>
+        </div>
+      </section>
+
+      <!-- vice mayor -->
+      <section class="my-3">
+        <h1
+          class="display-6 text-center mb-4 txt-green"
+          style="font-weight: bold"
+        >
+          Vice Mayor
+        </h1>
+        <div class="d-flex flex-wrap justify-content-center gap-4">
+          <section
+            class="d-flex align-items-center justify-content-between border-radius box my-1"
+          >
+            <div class="d-flex align-items-center gap-2 candidate">
+              <img
+                class="user-img rounded-circle"
+                src="../static/imgs/user.png"
+                alt=""
+              />
+              <div class="text-md-start text-center text-lg-start">
+                <h3 class="m-0 cand-name">Candidate 1</h3>
+                <p class="m-0 plist"><i>Partylist</i></p>
+              </div>
+            </div>
+            <p class="votes">100 votes</p>
+          </section>
+
+          <section
+            class="d-flex align-items-center justify-content-between border-radius box my-1"
+          >
+            <div class="d-flex align-items-center gap-2 candidate">
+              <img
+                class="user-img rounded-circle"
+                src="../static/imgs/user.png"
+                alt=""
+              />
+              <div class="text-md-start text-center text-lg-start">
+                <h3 class="m-0 cand-name">Candidate 1</h3>
+                <p class="m-0 plist"><i>Partylist</i></p>
+              </div>
+            </div>
+            <p class="votes">100 votes</p>
+          </section>
+
+          <section
+            class="d-flex align-items-center justify-content-between border-radius box my-1"
+          >
+            <div class="d-flex align-items-center gap-2 candidate">
+              <img
+                class="user-img rounded-circle"
+                src="../static/imgs/user.png"
+                alt=""
+              />
+              <div class="text-md-start text-center text-lg-start">
+                <h3 class="m-0 cand-name">Candidate 1</h3>
+                <p class="m-0 plist"><i>Partylist</i></p>
+              </div>
+            </div>
+            <p class="votes">100 votes</p>
+          </section>
+
+          <section
+            class="d-flex align-items-center justify-content-between border-radius box my-1"
+          >
+            <div class="d-flex align-items-center gap-2 candidate">
+              <img
+                class="user-img rounded-circle"
+                src="../static/imgs/user.png"
+                alt=""
+              />
+              <div class="text-md-start text-center text-lg-start">
+                <h3 class="m-0 cand-name">Candidate 1</h3>
+                <p class="m-0 plist"><i>Partylist</i></p>
+              </div>
+            </div>
+            <p class="votes">100 votes</p>
+          </section>
+        </div>
+      </section>
+
+      <!-- Senator -->
+      <section class="my-3">
+        <h1
+          class="display-6 text-center mb-4 txt-green"
+          style="font-weight: bold"
+        >
+          Senator
+        </h1>
+        <div class="d-flex flex-wrap justify-content-center gap-4">
+          <section
+            class="d-flex align-items-center justify-content-between border-radius box my-1"
+          >
+            <div class="d-flex align-items-center gap-2 candidate">
+              <img
+                class="user-img rounded-circle"
+                src="../static/imgs/user.png"
+                alt=""
+              />
+              <div class="text-md-start text-center text-lg-start">
+                <h3 class="m-0 cand-name">Candidate 1</h3>
+                <p class="m-0 plist"><i>Partylist</i></p>
+              </div>
+            </div>
+            <p class="votes">100 votes</p>
+          </section>
+
+          <section
+            class="d-flex align-items-center justify-content-between border-radius box my-1"
+          >
+            <div class="d-flex align-items-center gap-2 candidate">
+              <img
+                class="user-img rounded-circle"
+                src="../static/imgs/user.png"
+                alt=""
+              />
+              <div class="text-md-start text-center text-lg-start">
+                <h3 class="m-0 cand-name">Candidate 1</h3>
+                <p class="m-0 plist"><i>Partylist</i></p>
+              </div>
+            </div>
+            <p class="votes">100 votes</p>
+          </section>
+
+          <section
+            class="d-flex align-items-center justify-content-between border-radius box my-1"
+          >
+            <div class="d-flex align-items-center gap-2 candidate">
+              <img
+                class="user-img rounded-circle"
+                src="../static/imgs/user.png"
+                alt=""
+              />
+              <div class="text-md-start text-center text-lg-start">
+                <h3 class="m-0 cand-name">Candidate 1</h3>
+                <p class="m-0 plist"><i>Partylist</i></p>
+              </div>
+            </div>
+            <p class="votes">100 votes</p>
+          </section>
+
+          <section
+            class="d-flex align-items-center justify-content-between border-radius box my-1"
+          >
+            <div class="d-flex align-items-center gap-2 candidate">
+              <img
+                class="user-img rounded-circle"
+                src="../static/imgs/user.png"
+                alt=""
+              />
+              <div class="text-md-start text-center text-lg-start">
+                <h3 class="m-0 cand-name">Candidate 1</h3>
+                <p class="m-0 plist"><i>Partylist</i></p>
+              </div>
+            </div>
+            <p class="votes">100 votes</p>
+          </section>
+        </div>
+      </section>
+
+      <!-- IT Councilor -->
+      <section class="my-3">
+        <h1
+          class="display-6 text-center mb-4 txt-green"
+          style="font-weight: bold"
+        >
+          IT Councilors
+        </h1>
+        <div class="d-flex flex-wrap justify-content-center gap-4">
+          <section
+            class="d-flex align-items-center justify-content-between border-radius box my-1"
+          >
+            <div class="d-flex align-items-center gap-2 candidate">
+              <img
+                class="user-img rounded-circle"
+                src="../static/imgs/user.png"
+                alt=""
+              />
+              <div class="text-md-start text-center text-lg-start">
+                <h3 class="m-0 cand-name">Candidate 1</h3>
+                <p class="m-0 plist"><i>Partylist</i></p>
+              </div>
+            </div>
+            <p class="votes">100 votes</p>
+          </section>
+
+          <section
+            class="d-flex align-items-center justify-content-between border-radius box my-1"
+          >
+            <div class="d-flex align-items-center gap-2 candidate">
+              <img
+                class="user-img rounded-circle"
+                src="../static/imgs/user.png"
+                alt=""
+              />
+              <div class="text-md-start text-center text-lg-start">
+                <h3 class="m-0 cand-name">Candidate 1</h3>
+                <p class="m-0 plist"><i>Partylist</i></p>
+              </div>
+            </div>
+            <p class="votes">100 votes</p>
+          </section>
+
+          <section
+            class="d-flex align-items-center justify-content-between border-radius box my-1"
+          >
+            <div class="d-flex align-items-center gap-2 candidate">
+              <img
+                class="user-img rounded-circle"
+                src="../static/imgs/user.png"
+                alt=""
+              />
+              <div class="text-md-start text-center text-lg-start">
+                <h3 class="m-0 cand-name">Candidate 1</h3>
+                <p class="m-0 plist"><i>Partylist</i></p>
+              </div>
+            </div>
+            <p class="votes">100 votes</p>
+          </section>
+
+          <section
+            class="d-flex align-items-center justify-content-between border-radius box my-1"
+          >
+            <div class="d-flex align-items-center gap-2 candidate">
+              <img
+                class="user-img rounded-circle"
+                src="../static/imgs/user.png"
+                alt=""
+              />
+              <div class="text-md-start text-center text-lg-start">
+                <h3 class="m-0 cand-name">Candidate 1</h3>
+                <p class="m-0 plist"><i>Partylist</i></p>
+              </div>
+            </div>
+            <p class="votes">100 votes</p>
+          </section>
+        </div>
+      </section>
+
+      <!-- CS Councilor -->
+      <section class="my-3">
+        <h1
+          class="display-6 text-center mb-4 txt-green"
+          style="font-weight: bold"
+        >
+          CS Councilors
+        </h1>
+        <div class="d-flex flex-wrap justify-content-center gap-4">
+          <section
+            class="d-flex align-items-center justify-content-between border-radius box my-1"
+          >
+            <div class="d-flex align-items-center gap-2 candidate">
+              <img
+                class="user-img rounded-circle"
+                src="../static/imgs/user.png"
+                alt=""
+              />
+              <div class="text-md-start text-center text-lg-start">
+                <h3 class="m-0 cand-name">Candidate 1</h3>
+                <p class="m-0 plist"><i>Partylist</i></p>
+              </div>
+            </div>
+            <p class="votes">100 votes</p>
+          </section>
+
+          <section
+            class="d-flex align-items-center justify-content-between border-radius box my-1"
+          >
+            <div class="d-flex align-items-center gap-2 candidate">
+              <img
+                class="user-img rounded-circle"
+                src="../static/imgs/user.png"
+                alt=""
+              />
+              <div class="text-md-start text-center text-lg-start">
+                <h3 class="m-0 cand-name">Candidate 1</h3>
+                <p class="m-0 plist"><i>Partylist</i></p>
+              </div>
+            </div>
+            <p class="votes">100 votes</p>
+          </section>
+
+          <section
+            class="d-flex align-items-center justify-content-between border-radius box my-1"
+          >
+            <div class="d-flex align-items-center gap-2 candidate">
+              <img
+                class="user-img rounded-circle"
+                src="../static/imgs/user.png"
+                alt=""
+              />
+              <div class="text-md-start text-center text-lg-start">
+                <h3 class="m-0 cand-name">Candidate 1</h3>
+                <p class="m-0 plist"><i>Partylist</i></p>
+              </div>
+            </div>
+            <p class="votes">100 votes</p>
+          </section>
+
+          <section
+            class="d-flex align-items-center justify-content-between border-radius box my-1"
+          >
+            <div class="d-flex align-items-center gap-2 candidate">
+              <img
+                class="user-img rounded-circle"
+                src="../static/imgs/user.png"
+                alt=""
+              />
+              <div class="text-md-start text-center text-lg-start">
+                <h3 class="m-0 cand-name">Candidate 1</h3>
+                <p class="m-0 plist"><i>Partylist</i></p>
+              </div>
+            </div>
+            <p class="votes">100 votes</p>
+          </section>
+        </div>
+      </section>
+    </main>
+    <div class="position-relative">
+      <a href="#">
+        <p class="position-absolute pb-2 pt-1 px-3 rounded-circle" style="right: 0; bottom: 4rem; background-color: rgb(80, 105, 94); color: #fff; font-weight: bold; font-size: 18px;">&#8593</p>
+      </a>
+      </div>
+  </body>
+</html>

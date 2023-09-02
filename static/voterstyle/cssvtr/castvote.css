@@ -1,0 +1,121 @@
+.huge-box {
+  background: rgb(116, 142, 117);
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  text-align: center;
+  max-width: 90%;
+  margin: auto;
+  min-height: 85%;
+  display: block;
+}
+.containerr{
+  width: 70%;
+  margin: auto;
+}
+.bg-light-green {
+  background-color: rgb(134, 168, 135);
+}
+input[type=checkbox] + label {
+  display: block;
+  margin: 0.2em;
+  cursor: pointer;
+  padding: 0.2em;
+}
+
+input[type=checkbox] {
+  display: none;
+}
+
+input[type=checkbox] + label:before {
+  content: "\2714";
+  border: 2px solid rgb(55, 77, 67);
+  border-radius: 0.2em;
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.6rem;
+  padding-left: 0.3rem;
+  /* padding-bottom: 0.2rem; */
+  margin-right: 0.2em;
+  vertical-align: bottom;
+  color: transparent;
+  transition: .2s;
+  background-color: rgb(55, 77, 67);
+
+}
+
+input[type=checkbox] + label:active:before {
+  transform: scale(0);
+}
+
+input[type=checkbox]:checked + label:before {
+  background-color: rgb(55, 77, 67);
+  border-color: rgb(55, 77, 67);
+  color: #fff;
+}
+
+.transparent {
+  color: transparent;
+  background: transparent;
+}
+
+.tab{
+  background: rgb(106, 133, 107);
+  color: #fff;
+  padding: .5rem 1rem;
+  margin: .5rem ;
+  border-radius: 25px;
+}
+.red{
+  width: 12px;
+  height: 10px;
+  background: rgb(248, 44, 44);
+  font-size: 12px;
+  border-radius: 100px; 
+  bottom: .3rem;
+  color: transparent;
+  position: absolute;
+  transition: all .3s ease;
+}
+.green{
+  width: 12px;
+  height: 10px;
+  background: rgb(76, 250, 76);
+  font-size: 12px;
+  border-radius: 100px; 
+  bottom: .3rem;
+  color: transparent;
+  position: absolute;
+  transition: all .3s ease;
+}
+.selected-candidate-card {
+  cursor: pointer;
+}
+.selected-candidate-card img{
+  width: 5.5rem;
+}
+
+.voted{
+  background-color: rgb(197, 215, 205);
+  border-radius: 25px;
+  transition: all .5s ease;
+}
+
+@media (min-width: 40rem) {
+  .modal{
+    max-width: 30rem;
+    left: calc(50% - 15rem);
+  }
+}
+
+#sure{
+  width: 20rem;
+  height: 12.5rem;
+  z-index: 500;
+}
+.btns{
+  width: 12rem;
+  margin: auto;
+}
+.btns button{
+  width: 5rem;
+}

@@ -1,0 +1,1492 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% load static %}
+    <link
+      rel="shortcut icon"
+      href="{% static '../static/imgs/logo.png' %}"
+      type="image/x-icon"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static '../static/bootstrap-5.1.3-dist/css/bootstrap.min.css' %}"
+    />
+    <link rel="stylesheet" href="{% static '../static/globalcss/home.css' %}" />
+    <link
+      rel="stylesheet"
+      href="{% static '../static/globalcss/navbarr.css' %}"
+    />
+    <title>E-Voting System</title>
+    <style>
+      .card {
+        width: 12rem;
+        text-align: center;
+        border-radius: 15px;
+        font-size: 18px;
+        text-transform: uppercase;
+        font-weight: bold;
+      }
+      .cands-modal {
+        position: absolute;
+        left: 5%;
+        top: 20%;
+        background: rgb(55, 77, 67);
+        padding: 1.5rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+        text-align: center;
+        width: 90%;
+        min-height: 70%;
+        display: block;
+        z-index: 100;
+      }
+      .cands-modal .cands-close-modal {
+        position: absolute;
+        top: 1rem;
+        right: 2rem;
+        border: none;
+        background: #fff;
+        border-radius: 100px;
+        padding: 0 10px;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: #555;
+        font-weight: 600;
+      }
+      .hidden {
+        display: none;
+      }
+      .box {
+        width: 50%;
+        margin: auto;
+      }
+
+      .max-width {
+        max-width: 80%;
+      }
+      .border-radius {
+        border-radius: 25px;
+        width: 30rem;
+        /* height: 4.2rem; */
+        max-width: 90%;
+      }
+      .info-box {
+        color: rgb(230, 244, 237);
+        line-height: 1;
+        font-weight: bold;
+      }
+      .plist {
+        opacity: 0.5;
+      }
+      .position,
+      .cand-name {
+        text-transform: uppercase;
+      }
+      .cand-name {
+        /* letter-spacing: 2px; */
+        font-weight: bold;
+      }
+      .user-img {
+        width: 8rem;
+        /* margin-left: -0.5rem; */
+        /* border: #d5e9e0 5px double; */
+        object-fit: cover;
+      }
+      .position {
+        font-size: 1rem;
+        font-weight: bold;
+      }
+      .votes {
+        padding-right: 1.8rem;
+        padding-top: 1rem;
+      }
+      input {
+        background-color: transparent;
+        outline: none;
+        color: #fff;
+        border: none;
+      }
+
+      p,
+      li {
+        font-weight: normal;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      class="container my-5 d-flex align-items-center justify-content-between"
+    >
+      <a href="{% url 'mainvtr' %}" id="nav-logo">
+        <img src="{% static '../static/imgs/logo.png' %}" alt="" />
+      </a>
+      <a href="#" id="menu-btn">
+        <img src="{% static '../static/imgs/menu.png' %}" alt="" />
+      </a>
+    </div>
+    <div class="navbar hidden">
+      <button class="close-modal">&times;</button>
+      <ul id="menu-list">
+        <a href="{% url 'voterprf' %}">
+          <li class="text-start px-5">My Profile</li>
+        </a>
+        <a href="{% url 'dashboardvtr' %}">
+          <li class="text-start px-5">Dashboard</li>
+        </a>
+      </ul>
+      <a
+        href="{% url 'home' %}"
+        class="rounded-pill bg-greenn px-5 py-3 h5 position-absolute top-75"
+        id="logout"
+        >LOG OUT</a
+      >
+    </div>
+    <main class="my-4">
+      <div class="container">
+        <h1
+          class="text-center txt-green mb-4 display-4"
+          style="font-weight: bold"
+        >
+          CANDIDATES PROFILE
+        </h1>
+
+        <div
+          id="uploaded-partylist"
+          class="d-flex flex-wrap justify-content-center gap-3 box uploaded-partylist"
+        >
+          <!-- partylist 1 -->
+          <div>
+            <div class="rounded-3" style="background: rgb(55, 74, 70)">
+              <a
+                onclick="openModal(this)"
+                href="#"
+                class="card px-3 py-3 bg-greenn rounded-3"
+              >
+                <div>Partylist 1</div>
+              </a>
+            </div>
+
+            <div class="cands-modal hidden">
+              <button onclick="closeModal(this)" class="cands-close-modal">
+                &times;
+              </button>
+              <!-- Partylist -->
+              <section class="my-3 mt-5 pb-3">
+                <input
+                  type="text"
+                  value="PARTYLIST 1"
+                  style="text-transform: uppercase; font-weight: bold"
+                  class="display-6 text-center mb-4 text-white input"
+                  readonly
+                />
+
+                <div class="d-flex flex-wrap justify-content-center gap-3">
+                  <!-- mayor -->
+                  <section
+                    class="d-flex align-items-center border-radius info-box my-1 gap-3 pt-2"
+                  >
+                    <div
+                      class="d-flex flex-column align-items-center candidate"
+                      style="margin-left: 55px"
+                    >
+                      <img
+                        class="user-img rounded-circle mb-1"
+                        src="../static/imgs/user.png"
+                      />
+                    </div>
+                    <div class="text-start">
+                      <div>
+                        <h5 class="m-0" style="font-weight: bold">Mayor</h5>
+                        <input
+                          type="text"
+                          class="input m-0 font-des"
+                          style="font-size: 24px; font-weight: bold"
+                          value="Candidate Name"
+                          readonly
+                        />
+                      </div>
+                      <br />
+                      <div>
+                        <p class="m-0" style="font-size: 1.2rem">Platforms:</p>
+                        <ul>
+                          <li>
+                            <input
+                              type="text"
+                              class="input text-white"
+                              value="Lorem Ipsum Edit"
+                              readonly
+                            />
+                          </li>
+                          <li>
+                            <input
+                              type="text"
+                              class="input text-white"
+                              value="Lorem Ipsum Edit"
+                              readonly
+                            />
+                          </li>
+                          <li>
+                            <input
+                              type="text"
+                              class="input text-white"
+                              value="Lorem Ipsum Edit"
+                              readonly
+                            />
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </section>
+
+                  <!-- vice mayor -->
+                  <section
+                    class="d-flex align-items-center border-radius info-box my-1 gap-3 pt-2"
+                  >
+                    <div
+                      class="d-flex flex-column align-items-center candidate"
+                      style="margin-left: 55px"
+                    >
+                      <img
+                        class="user-img rounded-circle mb-1"
+                        src="../static/imgs/user.png"
+                      />
+                    </div>
+                    <div class="text-start">
+                      <div>
+                        <h5 class="m-0" style="font-weight: bold">
+                          Vice Mayor
+                        </h5>
+                        <input
+                          type="text"
+                          class="input m-0 font-des"
+                          style="font-size: 24px; font-weight: bold"
+                          value="Candidate Name"
+                          readonly
+                        />
+                      </div>
+                      <br />
+                      <div>
+                        <p class="m-0" style="font-size: 1.2rem">Platforms:</p>
+                        <ul>
+                          <li>
+                            <input
+                              type="text"
+                              class="input text-white"
+                              value="Lorem Ipsum Edit"
+                              readonly
+                            />
+                          </li>
+                          <li>
+                            <input
+                              type="text"
+                              class="input text-white"
+                              value="Lorem Ipsum Edit"
+                              readonly
+                            />
+                          </li>
+                          <li>
+                            <input
+                              type="text"
+                              class="input text-white"
+                              value="Lorem Ipsum Edit"
+                              readonly
+                            />
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </section>
+
+                  <!-- senator -->
+                  <section
+                    class="d-flex align-items-center border-radius info-box my-1 gap-3 pt-2"
+                  >
+                    <div
+                      class="d-flex flex-column align-items-center candidate"
+                      style="margin-left: 55px"
+                    >
+                      <img
+                        class="user-img rounded-circle mb-1"
+                        src="../static/imgs/user.png"
+                      />
+                    </div>
+                    <div class="text-start">
+                      <div>
+                        <h5 class="m-0" style="font-weight: bold">Senator</h5>
+                        <input
+                          type="text"
+                          class="input m-0 font-des"
+                          style="font-size: 24px; font-weight: bold"
+                          value="Candidate Name"
+                          readonly
+                        />
+                      </div>
+                      <br />
+                      <div>
+                        <p class="m-0" style="font-size: 1.2rem">Platforms:</p>
+                        <ul>
+                          <li>
+                            <input
+                              type="text"
+                              class="input text-white"
+                              value="Lorem Ipsum Edit"
+                              readonly
+                            />
+                          </li>
+                          <li>
+                            <input
+                              type="text"
+                              class="input text-white"
+                              value="Lorem Ipsum Edit"
+                              readonly
+                            />
+                          </li>
+                          <li>
+                            <input
+                              type="text"
+                              class="input text-white"
+                              value="Lorem Ipsum Edit"
+                              readonly
+                            />
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </section>
+
+                  <!-- councilors -->
+
+                  <section
+                    class="d-flex align-items-center border-radius info-box my-1 gap-3 pt-2"
+                  >
+                    <div
+                      class="d-flex flex-column align-items-center candidate"
+                      style="margin-left: 55px"
+                    >
+                      <img
+                        class="user-img rounded-circle mb-1"
+                        src="../static/imgs/user.png"
+                      />
+                    </div>
+                    <div class="text-start">
+                      <div>
+                        <h5 class="m-0" style="font-weight: bold">
+                          Councilor #1
+                        </h5>
+                        <input
+                          type="text"
+                          class="input m-0 font-des"
+                          style="font-size: 24px; font-weight: bold"
+                          value="Candidate Name"
+                          readonly
+                        />
+                      </div>
+                      <br />
+                      <div>
+                        <p class="m-0" style="font-size: 1.2rem">Platforms:</p>
+                        <ul>
+                          <li>
+                            <input
+                              type="text"
+                              class="input text-white"
+                              value="Lorem Ipsum Edit"
+                              readonly
+                            />
+                          </li>
+                          <li>
+                            <input
+                              type="text"
+                              class="input text-white"
+                              value="Lorem Ipsum Edit"
+                              readonly
+                            />
+                          </li>
+                          <li>
+                            <input
+                              type="text"
+                              class="input text-white"
+                              value="Lorem Ipsum Edit"
+                              readonly
+                            />
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </section>
+
+                  <section
+                    class="d-flex align-items-center border-radius info-box my-1 gap-3 pt-2"
+                  >
+                    <div
+                      class="d-flex flex-column align-items-center candidate"
+                      style="margin-left: 55px"
+                    >
+                      <img
+                        class="user-img rounded-circle mb-1"
+                        src="../static/imgs/user.png"
+                      />
+                    </div>
+                    <div class="text-start">
+                      <div>
+                        <h5 class="m-0" style="font-weight: bold">
+                          Councilor #2
+                        </h5>
+                        <input
+                          type="text"
+                          class="input m-0 font-des"
+                          style="font-size: 24px; font-weight: bold"
+                          value="Candidate Name"
+                          readonly
+                        />
+                      </div>
+                      <br />
+                      <div>
+                        <p class="m-0" style="font-size: 1.2rem">Platforms:</p>
+                        <ul>
+                          <li>
+                            <input
+                              type="text"
+                              class="input text-white"
+                              value="Lorem Ipsum Edit"
+                              readonly
+                            />
+                          </li>
+                          <li>
+                            <input
+                              type="text"
+                              class="input text-white"
+                              value="Lorem Ipsum Edit"
+                              readonly
+                            />
+                          </li>
+                          <li>
+                            <input
+                              type="text"
+                              class="input text-white"
+                              value="Lorem Ipsum Edit"
+                              readonly
+                            />
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </section>
+
+                  <section
+                    class="d-flex align-items-center border-radius info-box my-1 gap-3 pt-2"
+                  >
+                    <div
+                      class="d-flex flex-column align-items-center candidate"
+                      style="margin-left: 55px"
+                    >
+                      <img
+                        class="user-img rounded-circle mb-1"
+                        src="../static/imgs/user.png"
+                      />
+                    </div>
+                    <div class="text-start">
+                      <div>
+                        <h5 class="m-0" style="font-weight: bold">
+                          Councilor #3
+                        </h5>
+                        <input
+                          type="text"
+                          class="input m-0 font-des"
+                          style="font-size: 24px; font-weight: bold"
+                          value="Candidate Name"
+                          readonly
+                        />
+                      </div>
+                      <br />
+                      <div>
+                        <p class="m-0" style="font-size: 1.2rem">Platforms:</p>
+                        <ul>
+                          <li>
+                            <input
+                              type="text"
+                              class="input text-white"
+                              value="Lorem Ipsum Edit"
+                              readonly
+                            />
+                          </li>
+                          <li>
+                            <input
+                              type="text"
+                              class="input text-white"
+                              value="Lorem Ipsum Edit"
+                              readonly
+                            />
+                          </li>
+                          <li>
+                            <input
+                              type="text"
+                              class="input text-white"
+                              value="Lorem Ipsum Edit"
+                              readonly
+                            />
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </section>
+
+                  <section
+                    class="d-flex align-items-center border-radius info-box my-1 gap-3 pt-2"
+                  >
+                    <div
+                      class="d-flex flex-column align-items-center candidate"
+                      style="margin-left: 55px"
+                    >
+                      <img
+                        class="user-img rounded-circle mb-1"
+                        src="../static/imgs/user.png"
+                      />
+                    </div>
+                    <div class="text-start">
+                      <div>
+                        <h5 class="m-0" style="font-weight: bold">
+                          Councilor #4
+                        </h5>
+                        <input
+                          type="text"
+                          class="input m-0 font-des"
+                          style="font-size: 24px; font-weight: bold"
+                          value="Candidate Name"
+                          readonly
+                        />
+                      </div>
+                      <br />
+                      <div>
+                        <p class="m-0" style="font-size: 1.2rem">Platforms:</p>
+                        <ul>
+                          <li>
+                            <input
+                              type="text"
+                              class="input text-white"
+                              value="Lorem Ipsum Edit"
+                              readonly
+                            />
+                          </li>
+                          <li>
+                            <input
+                              type="text"
+                              class="input text-white"
+                              value="Lorem Ipsum Edit"
+                              readonly
+                            />
+                          </li>
+                          <li>
+                            <input
+                              type="text"
+                              class="input text-white"
+                              value="Lorem Ipsum Edit"
+                              readonly
+                            />
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </section>
+                </div>
+              </section>
+            </div>
+            <script>
+              openModal(this);
+              closeModal(this);
+            </script>
+          </div>
+
+          <!-- partylist 2 -->
+          <div>
+            <div class="rounded-3" style="background: rgb(55, 74, 70)">
+              <a
+                onclick="openModal(this)"
+                href="#"
+                class="card px-3 py-3 bg-greenn rounded-3"
+              >
+                <div>Partylist 2</div>
+              </a>
+            </div>
+
+            <div class="cands-modal hidden">
+              <button onclick="closeModal(this)" class="cands-close-modal">
+                &times;
+              </button>
+              <!-- Partylist -->
+              <section class="my-3 mt-5 pb-3">
+                <input
+                  type="text"
+                  value="PARTYLIST 2"
+                  style="text-transform: uppercase; font-weight: bold"
+                  class="display-6 text-center mb-4 text-white input"
+                  readonly
+                />
+
+                <div class="d-flex flex-wrap justify-content-center gap-3">
+                  <!-- mayor -->
+                  <section
+                    class="d-flex align-items-center border-radius info-box my-1 gap-3 pt-2"
+                  >
+                    <div
+                      class="d-flex flex-column align-items-center candidate"
+                      style="margin-left: 55px"
+                    >
+                      <img
+                        class="user-img rounded-circle mb-1"
+                        src="../static/imgs/user.png"
+                      />
+                    </div>
+                    <div class="text-start">
+                      <div>
+                        <h5 class="m-0" style="font-weight: bold">Mayor</h5>
+                        <input
+                          type="text"
+                          class="input m-0 font-des"
+                          style="font-size: 24px; font-weight: bold"
+                          value="Candidate Name"
+                          readonly
+                        />
+                      </div>
+                      <br />
+                      <div>
+                        <p class="m-0" style="font-size: 1.2rem">Platforms:</p>
+                        <ul>
+                          <li>
+                            <input
+                              type="text"
+                              class="input text-white"
+                              value="Lorem Ipsum Edit"
+                              readonly
+                            />
+                          </li>
+                          <li>
+                            <input
+                              type="text"
+                              class="input text-white"
+                              value="Lorem Ipsum Edit"
+                              readonly
+                            />
+                          </li>
+                          <li>
+                            <input
+                              type="text"
+                              class="input text-white"
+                              value="Lorem Ipsum Edit"
+                              readonly
+                            />
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </section>
+
+                  <!-- vice mayor -->
+                  <section
+                    class="d-flex align-items-center border-radius info-box my-1 gap-3 pt-2"
+                  >
+                    <div
+                      class="d-flex flex-column align-items-center candidate"
+                      style="margin-left: 55px"
+                    >
+                      <img
+                        class="user-img rounded-circle mb-1"
+                        src="../static/imgs/user.png"
+                      />
+                    </div>
+                    <div class="text-start">
+                      <div>
+                        <h5 class="m-0" style="font-weight: bold">
+                          Vice Mayor
+                        </h5>
+                        <input
+                          type="text"
+                          class="input m-0 font-des"
+                          style="font-size: 24px; font-weight: bold"
+                          value="Candidate Name"
+                          readonly
+                        />
+                      </div>
+                      <br />
+                      <div>
+                        <p class="m-0" style="font-size: 1.2rem">Platforms:</p>
+                        <ul>
+                          <li>
+                            <input
+                              type="text"
+                              class="input text-white"
+                              value="Lorem Ipsum Edit"
+                              readonly
+                            />
+                          </li>
+                          <li>
+                            <input
+                              type="text"
+                              class="input text-white"
+                              value="Lorem Ipsum Edit"
+                              readonly
+                            />
+                          </li>
+                          <li>
+                            <input
+                              type="text"
+                              class="input text-white"
+                              value="Lorem Ipsum Edit"
+                              readonly
+                            />
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </section>
+
+                  <!-- senator -->
+                  <section
+                    class="d-flex align-items-center border-radius info-box my-1 gap-3 pt-2"
+                  >
+                    <div
+                      class="d-flex flex-column align-items-center candidate"
+                      style="margin-left: 55px"
+                    >
+                      <img
+                        class="user-img rounded-circle mb-1"
+                        src="../static/imgs/user.png"
+                      />
+                    </div>
+                    <div class="text-start">
+                      <div>
+                        <h5 class="m-0" style="font-weight: bold">Senator</h5>
+                        <input
+                          type="text"
+                          class="input m-0 font-des"
+                          style="font-size: 24px; font-weight: bold"
+                          value="Candidate Name"
+                          readonly
+                        />
+                      </div>
+                      <br />
+                      <div>
+                        <p class="m-0" style="font-size: 1.2rem">Platforms:</p>
+                        <ul>
+                          <li>
+                            <input
+                              type="text"
+                              class="input text-white"
+                              value="Lorem Ipsum Edit"
+                              readonly
+                            />
+                          </li>
+                          <li>
+                            <input
+                              type="text"
+                              class="input text-white"
+                              value="Lorem Ipsum Edit"
+                              readonly
+                            />
+                          </li>
+                          <li>
+                            <input
+                              type="text"
+                              class="input text-white"
+                              value="Lorem Ipsum Edit"
+                              readonly
+                            />
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </section>
+
+                  <!-- councilors -->
+
+                  <section
+                    class="d-flex align-items-center border-radius info-box my-1 gap-3 pt-2"
+                  >
+                    <div
+                      class="d-flex flex-column align-items-center candidate"
+                      style="margin-left: 55px"
+                    >
+                      <img
+                        class="user-img rounded-circle mb-1"
+                        src="../static/imgs/user.png"
+                      />
+                    </div>
+                    <div class="text-start">
+                      <div>
+                        <h5 class="m-0" style="font-weight: bold">
+                          Councilor #1
+                        </h5>
+                        <input
+                          type="text"
+                          class="input m-0 font-des"
+                          style="font-size: 24px; font-weight: bold"
+                          value="Candidate Name"
+                          readonly
+                        />
+                      </div>
+                      <br />
+                      <div>
+                        <p class="m-0" style="font-size: 1.2rem">Platforms:</p>
+                        <ul>
+                          <li>
+                            <input
+                              type="text"
+                              class="input text-white"
+                              value="Lorem Ipsum Edit"
+                              readonly
+                            />
+                          </li>
+                          <li>
+                            <input
+                              type="text"
+                              class="input text-white"
+                              value="Lorem Ipsum Edit"
+                              readonly
+                            />
+                          </li>
+                          <li>
+                            <input
+                              type="text"
+                              class="input text-white"
+                              value="Lorem Ipsum Edit"
+                              readonly
+                            />
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </section>
+
+                  <section
+                    class="d-flex align-items-center border-radius info-box my-1 gap-3 pt-2"
+                  >
+                    <div
+                      class="d-flex flex-column align-items-center candidate"
+                      style="margin-left: 55px"
+                    >
+                      <img
+                        class="user-img rounded-circle mb-1"
+                        src="../static/imgs/user.png"
+                      />
+                    </div>
+                    <div class="text-start">
+                      <div>
+                        <h5 class="m-0" style="font-weight: bold">
+                          Councilor #2
+                        </h5>
+                        <input
+                          type="text"
+                          class="input m-0 font-des"
+                          style="font-size: 24px; font-weight: bold"
+                          value="Candidate Name"
+                          readonly
+                        />
+                      </div>
+                      <br />
+                      <div>
+                        <p class="m-0" style="font-size: 1.2rem">Platforms:</p>
+                        <ul>
+                          <li>
+                            <input
+                              type="text"
+                              class="input text-white"
+                              value="Lorem Ipsum Edit"
+                              readonly
+                            />
+                          </li>
+                          <li>
+                            <input
+                              type="text"
+                              class="input text-white"
+                              value="Lorem Ipsum Edit"
+                              readonly
+                            />
+                          </li>
+                          <li>
+                            <input
+                              type="text"
+                              class="input text-white"
+                              value="Lorem Ipsum Edit"
+                              readonly
+                            />
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </section>
+
+                  <section
+                    class="d-flex align-items-center border-radius info-box my-1 gap-3 pt-2"
+                  >
+                    <div
+                      class="d-flex flex-column align-items-center candidate"
+                      style="margin-left: 55px"
+                    >
+                      <img
+                        class="user-img rounded-circle mb-1"
+                        src="../static/imgs/user.png"
+                      />
+                    </div>
+                    <div class="text-start">
+                      <div>
+                        <h5 class="m-0" style="font-weight: bold">
+                          Councilor #3
+                        </h5>
+                        <input
+                          type="text"
+                          class="input m-0 font-des"
+                          style="font-size: 24px; font-weight: bold"
+                          value="Candidate Name"
+                          readonly
+                        />
+                      </div>
+                      <br />
+                      <div>
+                        <p class="m-0" style="font-size: 1.2rem">Platforms:</p>
+                        <ul>
+                          <li>
+                            <input
+                              type="text"
+                              class="input text-white"
+                              value="Lorem Ipsum Edit"
+                              readonly
+                            />
+                          </li>
+                          <li>
+                            <input
+                              type="text"
+                              class="input text-white"
+                              value="Lorem Ipsum Edit"
+                              readonly
+                            />
+                          </li>
+                          <li>
+                            <input
+                              type="text"
+                              class="input text-white"
+                              value="Lorem Ipsum Edit"
+                              readonly
+                            />
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </section>
+
+                  <section
+                    class="d-flex align-items-center border-radius info-box my-1 gap-3 pt-2"
+                  >
+                    <div
+                      class="d-flex flex-column align-items-center candidate"
+                      style="margin-left: 55px"
+                    >
+                      <img
+                        class="user-img rounded-circle mb-1"
+                        src="../static/imgs/user.png"
+                      />
+                    </div>
+                    <div class="text-start">
+                      <div>
+                        <h5 class="m-0" style="font-weight: bold">
+                          Councilor #4
+                        </h5>
+                        <input
+                          type="text"
+                          class="input m-0 font-des"
+                          style="font-size: 24px; font-weight: bold"
+                          value="Candidate Name"
+                          readonly
+                        />
+                      </div>
+                      <br />
+                      <div>
+                        <p class="m-0" style="font-size: 1.2rem">Platforms:</p>
+                        <ul>
+                          <li>
+                            <input
+                              type="text"
+                              class="input text-white"
+                              value="Lorem Ipsum Edit"
+                              readonly
+                            />
+                          </li>
+                          <li>
+                            <input
+                              type="text"
+                              class="input text-white"
+                              value="Lorem Ipsum Edit"
+                              readonly
+                            />
+                          </li>
+                          <li>
+                            <input
+                              type="text"
+                              class="input text-white"
+                              value="Lorem Ipsum Edit"
+                              readonly
+                            />
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </section>
+                </div>
+              </section>
+            </div>
+            <script>
+              openModal(this);
+              closeModal(this);
+            </script>
+          </div>
+
+          <!-- partylist 3 -->
+          <div>
+            <div class="rounded-3" style="background: rgb(55, 74, 70)">
+              <a
+                onclick="openModal(this)"
+                href="#"
+                class="card px-3 py-3 bg-greenn rounded-3"
+              >
+                <div>Partylist 3</div>
+              </a>
+            </div>
+
+            <div class="cands-modal hidden">
+              <button onclick="closeModal(this)" class="cands-close-modal">
+                &times;
+              </button>
+              <!-- Partylist -->
+              <section class="my-3 mt-5 pb-3">
+                <input
+                  type="text"
+                  value="PARTYLIST 3"
+                  style="text-transform: uppercase; font-weight: bold"
+                  class="display-6 text-center mb-4 text-white input"
+                  readonly
+                />
+
+                <div class="d-flex flex-wrap justify-content-center gap-3">
+                  <!-- mayor -->
+                  <section
+                    class="d-flex align-items-center border-radius info-box my-1 gap-3 pt-2"
+                  >
+                    <div
+                      class="d-flex flex-column align-items-center candidate"
+                      style="margin-left: 55px"
+                    >
+                      <img
+                        class="user-img rounded-circle mb-1"
+                        src="../static/imgs/user.png"
+                      />
+                    </div>
+                    <div class="text-start">
+                      <div>
+                        <h5 class="m-0" style="font-weight: bold">Mayor</h5>
+                        <input
+                          type="text"
+                          class="input m-0 font-des"
+                          style="font-size: 24px; font-weight: bold"
+                          value="Candidate Name"
+                          readonly
+                        />
+                      </div>
+                      <br />
+                      <div>
+                        <p class="m-0" style="font-size: 1.2rem">Platforms:</p>
+                        <ul>
+                          <li>
+                            <input
+                              type="text"
+                              class="input text-white"
+                              value="Lorem Ipsum Edit"
+                              readonly
+                            />
+                          </li>
+                          <li>
+                            <input
+                              type="text"
+                              class="input text-white"
+                              value="Lorem Ipsum Edit"
+                              readonly
+                            />
+                          </li>
+                          <li>
+                            <input
+                              type="text"
+                              class="input text-white"
+                              value="Lorem Ipsum Edit"
+                              readonly
+                            />
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </section>
+
+                  <!-- vice mayor -->
+                  <section
+                    class="d-flex align-items-center border-radius info-box my-1 gap-3 pt-2"
+                  >
+                    <div
+                      class="d-flex flex-column align-items-center candidate"
+                      style="margin-left: 55px"
+                    >
+                      <img
+                        class="user-img rounded-circle mb-1"
+                        src="../static/imgs/user.png"
+                      />
+                    </div>
+                    <div class="text-start">
+                      <div>
+                        <h5 class="m-0" style="font-weight: bold">
+                          Vice Mayor
+                        </h5>
+                        <input
+                          type="text"
+                          class="input m-0 font-des"
+                          style="font-size: 24px; font-weight: bold"
+                          value="Candidate Name"
+                          readonly
+                        />
+                      </div>
+                      <br />
+                      <div>
+                        <p class="m-0" style="font-size: 1.2rem">Platforms:</p>
+                        <ul>
+                          <li>
+                            <input
+                              type="text"
+                              class="input text-white"
+                              value="Lorem Ipsum Edit"
+                              readonly
+                            />
+                          </li>
+                          <li>
+                            <input
+                              type="text"
+                              class="input text-white"
+                              value="Lorem Ipsum Edit"
+                              readonly
+                            />
+                          </li>
+                          <li>
+                            <input
+                              type="text"
+                              class="input text-white"
+                              value="Lorem Ipsum Edit"
+                              readonly
+                            />
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </section>
+
+                  <!-- senator -->
+                  <section
+                    class="d-flex align-items-center border-radius info-box my-1 gap-3 pt-2"
+                  >
+                    <div
+                      class="d-flex flex-column align-items-center candidate"
+                      style="margin-left: 55px"
+                    >
+                      <img
+                        class="user-img rounded-circle mb-1"
+                        src="../static/imgs/user.png"
+                      />
+                    </div>
+                    <div class="text-start">
+                      <div>
+                        <h5 class="m-0" style="font-weight: bold">Senator</h5>
+                        <input
+                          type="text"
+                          class="input m-0 font-des"
+                          style="font-size: 24px; font-weight: bold"
+                          value="Candidate Name"
+                          readonly
+                        />
+                      </div>
+                      <br />
+                      <div>
+                        <p class="m-0" style="font-size: 1.2rem">Platforms:</p>
+                        <ul>
+                          <li>
+                            <input
+                              type="text"
+                              class="input text-white"
+                              value="Lorem Ipsum Edit"
+                              readonly
+                            />
+                          </li>
+                          <li>
+                            <input
+                              type="text"
+                              class="input text-white"
+                              value="Lorem Ipsum Edit"
+                              readonly
+                            />
+                          </li>
+                          <li>
+                            <input
+                              type="text"
+                              class="input text-white"
+                              value="Lorem Ipsum Edit"
+                              readonly
+                            />
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </section>
+
+                  <!-- councilors -->
+
+                  <section
+                    class="d-flex align-items-center border-radius info-box my-1 gap-3 pt-2"
+                  >
+                    <div
+                      class="d-flex flex-column align-items-center candidate"
+                      style="margin-left: 55px"
+                    >
+                      <img
+                        class="user-img rounded-circle mb-1"
+                        src="../static/imgs/user.png"
+                      />
+                    </div>
+                    <div class="text-start">
+                      <div>
+                        <h5 class="m-0" style="font-weight: bold">
+                          Councilor #1
+                        </h5>
+                        <input
+                          type="text"
+                          class="input m-0 font-des"
+                          style="font-size: 24px; font-weight: bold"
+                          value="Candidate Name"
+                          readonly
+                        />
+                      </div>
+                      <br />
+                      <div>
+                        <p class="m-0" style="font-size: 1.2rem">Platforms:</p>
+                        <ul>
+                          <li>
+                            <input
+                              type="text"
+                              class="input text-white"
+                              value="Lorem Ipsum Edit"
+                              readonly
+                            />
+                          </li>
+                          <li>
+                            <input
+                              type="text"
+                              class="input text-white"
+                              value="Lorem Ipsum Edit"
+                              readonly
+                            />
+                          </li>
+                          <li>
+                            <input
+                              type="text"
+                              class="input text-white"
+                              value="Lorem Ipsum Edit"
+                              readonly
+                            />
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </section>
+
+                  <section
+                    class="d-flex align-items-center border-radius info-box my-1 gap-3 pt-2"
+                  >
+                    <div
+                      class="d-flex flex-column align-items-center candidate"
+                      style="margin-left: 55px"
+                    >
+                      <img
+                        class="user-img rounded-circle mb-1"
+                        src="../static/imgs/user.png"
+                      />
+                    </div>
+                    <div class="text-start">
+                      <div>
+                        <h5 class="m-0" style="font-weight: bold">
+                          Councilor #2
+                        </h5>
+                        <input
+                          type="text"
+                          class="input m-0 font-des"
+                          style="font-size: 24px; font-weight: bold"
+                          value="Candidate Name"
+                          readonly
+                        />
+                      </div>
+                      <br />
+                      <div>
+                        <p class="m-0" style="font-size: 1.2rem">Platforms:</p>
+                        <ul>
+                          <li>
+                            <input
+                              type="text"
+                              class="input text-white"
+                              value="Lorem Ipsum Edit"
+                              readonly
+                            />
+                          </li>
+                          <li>
+                            <input
+                              type="text"
+                              class="input text-white"
+                              value="Lorem Ipsum Edit"
+                              readonly
+                            />
+                          </li>
+                          <li>
+                            <input
+                              type="text"
+                              class="input text-white"
+                              value="Lorem Ipsum Edit"
+                              readonly
+                            />
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </section>
+
+                  <section
+                    class="d-flex align-items-center border-radius info-box my-1 gap-3 pt-2"
+                  >
+                    <div
+                      class="d-flex flex-column align-items-center candidate"
+                      style="margin-left: 55px"
+                    >
+                      <img
+                        class="user-img rounded-circle mb-1"
+                        src="../static/imgs/user.png"
+                      />
+                    </div>
+                    <div class="text-start">
+                      <div>
+                        <h5 class="m-0" style="font-weight: bold">
+                          Councilor #3
+                        </h5>
+                        <input
+                          type="text"
+                          class="input m-0 font-des"
+                          style="font-size: 24px; font-weight: bold"
+                          value="Candidate Name"
+                          readonly
+                        />
+                      </div>
+                      <br />
+                      <div>
+                        <p class="m-0" style="font-size: 1.2rem">Platforms:</p>
+                        <ul>
+                          <li>
+                            <input
+                              type="text"
+                              class="input text-white"
+                              value="Lorem Ipsum Edit"
+                              readonly
+                            />
+                          </li>
+                          <li>
+                            <input
+                              type="text"
+                              class="input text-white"
+                              value="Lorem Ipsum Edit"
+                              readonly
+                            />
+                          </li>
+                          <li>
+                            <input
+                              type="text"
+                              class="input text-white"
+                              value="Lorem Ipsum Edit"
+                              readonly
+                            />
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </section>
+
+                  <section
+                    class="d-flex align-items-center border-radius info-box my-1 gap-3 pt-2"
+                  >
+                    <div
+                      class="d-flex flex-column align-items-center candidate"
+                      style="margin-left: 55px"
+                    >
+                      <img
+                        class="user-img rounded-circle mb-1"
+                        src="../static/imgs/user.png"
+                      />
+                    </div>
+                    <div class="text-start">
+                      <div>
+                        <h5 class="m-0" style="font-weight: bold">
+                          Councilor #4
+                        </h5>
+                        <input
+                          type="text"
+                          class="input m-0 font-des"
+                          style="font-size: 24px; font-weight: bold"
+                          value="Candidate Name"
+                          readonly
+                        />
+                      </div>
+                      <br />
+                      <div>
+                        <p class="m-0" style="font-size: 1.2rem">Platforms:</p>
+                        <ul>
+                          <li>
+                            <input
+                              type="text"
+                              class="input text-white"
+                              value="Lorem Ipsum Edit"
+                              readonly
+                            />
+                          </li>
+                          <li>
+                            <input
+                              type="text"
+                              class="input text-white"
+                              value="Lorem Ipsum Edit"
+                              readonly
+                            />
+                          </li>
+                          <li>
+                            <input
+                              type="text"
+                              class="input text-white"
+                              value="Lorem Ipsum Edit"
+                              readonly
+                            />
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </section>
+                </div>
+              </section>
+            </div>
+            <script>
+              openModal(this);
+              closeModal(this);
+            </script>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="{% static '../static/voterstyle/jsvtr/candsprf.js' %}"></script>
+  </body>
+</html>

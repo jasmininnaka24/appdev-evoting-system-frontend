@@ -1,0 +1,146 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="{% static '../static/imgs/logo.png' %}"
+      type="image/x-icon"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static '../static/voterstyle/cssvtr/castvote.css' %}"
+    />
+    <title>Evoting System</title>
+    <style>
+      .block {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    {% include 'navbarvtr.html' %}
+    <main class="container">
+      <h1 class="display-4 txt-green text-center" style="font-weight: bold">
+        POLITICAL CANDIDATES
+      </h1>
+
+      <!-- huge box -->
+      <section class="huge-box bg-light-green">
+        <div class="d-flex flex-wrap justify-content-center box">
+          <!-- tabs -->
+          <a href="#mayorcands">
+            <h4 class="tab" id="mayor">
+              <span class="green position-relative">Ol</span> Mayor
+            </h4>
+          </a>
+          <a href="#vmayorcands">
+            <h4 class="tab" id="vmayor">
+              <span class="red position-relative">Ol</span> Vice Mayor
+            </h4>
+          </a>
+          <a href="#senatorcands">
+            <h4 class="tab" id="senator">
+              <span class="red position-relative">Ol</span> Senator
+            </h4>
+          </a>
+          <a href="#councilorscands">
+            <h4 class="tab" id="councilors">
+              <span class="red position-relative">Ol</span> Councilors
+            </h4>
+          </a>
+        </div>
+        <hr style="margin-top: 0; border: solid 1px #222" />
+
+        <!-- mayor candidates -->
+        <div class="containerr">
+          <section id="mayorcands" class="">
+            {% include 'mayorcands.html' %}
+          </section>
+          <section id="vmayorcands" class="hidden">
+            {% include 'vmayorcands.html' %}
+          </section>
+          <section id="senatorcands" class="hidden">
+            {% include 'senatorcands.html' %}
+          </section>
+          <section id="councilorscands" class="hidden">
+            {% include 'councilorscands.html' %}
+          </section>
+        </div>
+      </section>
+
+      <!-- text below -->
+      <section class="d-flex flex-wrap justify-content-around box mt-3">
+        <div
+          id="send-confirmation"
+          class="d-flex justify-content-center align-items-center gap-2"
+        >
+          <input
+            type="checkbox"
+            id="send-confirmation-inp"
+            name="send-confirmation-inp"
+            value="Apple"
+          />
+          <label
+            for="send-confirmation-inp"
+            class="txt-green"
+            style="font-weight: bold"
+            >Send Confimation</label
+          >
+        </div>
+        <div>
+          <a href="#" id="btn-cands-save" class="">
+            <div
+              class="btn bg-greenn text-decoration-none px-4 py-1 mt-2 rounded-pill"
+              style="font-weight: 700"
+            >
+              SAVE
+            </div>
+          </a>
+
+          <a href="#" id="btn-cands-saved" class="hidden">
+            <div
+              class="btn bg-greenn text-decoration-none px-4 py-1 mt-2 rounded-pill"
+              style="font-weight: 700"
+            >
+              SAVED
+            </div>
+          </a>
+        </div>
+
+        <div
+          id="sure"
+          class="rounded-3 text-center position-absolute hidden"
+          style="background-color: rgb(116, 142, 117); top: 15rem"
+        >
+          <h5
+            class="d-inline-block rounded-circle bg-greenn mt-4"
+            style="
+              font-weight: bold;
+              font-size: 25px;
+              padding: 0.5rem 1rem;
+              margin-top: 2rem;
+            "
+          >
+            !
+          </h5>
+          <p class="text-white mt-2" style="font-weight: bold">
+            Are you sure of your votes?
+          </p>
+          <div class="d-flex justify-content-evenly btns gap-1">
+            <button type="submit" class="rounded-pill btn bg-greenn">
+              Yes
+            </button>
+            <button type="reset" class="rounded-pill btn bg-lightt">No</button>
+          </div>
+        </div>
+      </section>
+    </main>
+    <div class="overlay hidden"></div>
+    <script src="{% static '../static/voterstyle/jsvtr/castvote.js' %}"></script>
+  </body>
+</html>

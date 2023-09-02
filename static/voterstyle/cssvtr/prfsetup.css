@@ -1,0 +1,63 @@
+#myprofile-heading {
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-top: -2rem;
+}
+
+input {
+  width: 20rem;
+  padding: 0.2rem;
+  background: transparent;
+  border: none;
+  border-bottom: rgb(86, 103, 95) solid 4px;
+  margin-bottom: 1rem;
+  outline: none;
+  color: rgb(86, 103, 95);
+  font-size: 20px;
+}
+input[type="text"],
+input[type="email"] {
+  font-size: 20px;
+  font-weight: 900;
+}
+input[type="email"] {
+  text-transform: lowercase;
+}
+.user-name input[type="text"] {
+  font-size: 24px;
+  text-transform: uppercase;
+}
+.user-info input[type="text"] {
+  text-transform: uppercase;
+}
+label,
+label {
+  color: rgb(86, 103, 95);
+  margin: 0.2rem auto;
+}
+form div {
+  margin-top: 0.4rem;
+}
+form {
+  margin-top: 0.5rem;
+}
+
+#successful{
+  margin-left: 1.2rem;
+  margin-top: -1rem;
+  padding: .4rem 1rem;
+  background: rgb(159, 194, 159);
+  color: #555;
+  transition: all .5s cubic-bezier(1,0,0,1);
+}
+
+#check{
+  color: rgb(159, 194, 159);
+  background: #fff;
+  padding: .2rem .5rem;
+  margin-left: .5rem;
+}
+
+.hidden{
+  display: none;
+}

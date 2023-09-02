@@ -1,0 +1,219 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="{% static '../static/imgs/logo.png' %}"
+      type="image/x-icon"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static '../static/bootstrap-5.1.3-dist/css/bootstrap.min.css' %}"
+    />
+    <link rel="stylesheet" href="{% static '../static/globalcss/home.css' %}" />
+    <title>E-Voting System</title>
+  </head>
+
+  <body>
+    <div id="backdrop" class="overlay hidden"></div>
+    <div class="container">
+      <nav
+        class="container my-5 d-flex align-items-center justify-content-between"
+      >
+        <a href="{% url 'home' %}" id="logo" class="logo">
+          <img src="{% static '../static/imgs/logo.png' %}" alt="" />
+        </a>
+        <div class="btns">
+          <div
+            class="btn bg-lightt mx-1 px-4 rounded-pill show-modal-1 modal-btn-sign-in"
+          >
+            Sign In
+          </div>
+          <div
+            class="btn bg-greenn mx-1 px-4 rounded-pill show-modal-2 modal-btn-sign-up"
+          >
+            Sign Up
+          </div>
+        </div>
+      </nav>
+
+      {% block content %}
+
+      <h1
+        class="txt-green text-lg-start text-center text-lg-start display-1 p-5"
+        style="font-weight: 700"
+      >
+        COLLEGE OF <br />
+        COMPUTING STUDIES <br />
+        E-VOTING SYSTEM
+      </h1>
+
+      <div class="modal hidden">
+        <button class="close-modal">&times;</button>
+        <div class="sign-btns">
+          <div class="btns">
+            <div class="btn my-4 px-4 py-2" id="sign-in-btn">Sign In</div>
+            <div
+              class="btn my-4 px-4 py-2"
+              id="sign-up-btn"
+              style="border: none; outline: none"
+            >
+              Sign Up
+            </div>
+          </div>
+
+          <!-- active 1 -->
+          <div class="signIn-func">
+            <form
+              class="text-start px-5 d-flex flex-column justify-content-between align-items-center"
+              id="sign-form-1"
+            >
+              <div class="user-wmsu-email">
+                <label for="email1">WMSU email: </label><br />
+                <input
+                  type="email"
+                  class="user-email-inp"
+                  name="email1"
+                  id="email1"
+                  required
+                />
+              </div>
+              <div class="user-wmsu-password">
+                <label for="password1">Password: </label><br />
+                <input
+                  type="password"
+                  class="user-pass-inp"
+                  name="password1"
+                  id="password1"
+                  required
+                />
+              </div>
+              <button
+                type="submit"
+                class="btn bg-greenn text-decoration-none px-5 py-3 mt-3 rounded-pill"
+                id="btn-signin"
+              >
+                <a href="" class="text-white" style="font-size: 18px">Login</a>
+              </button>
+            </form>
+          </div>
+
+          <!-- active 2 -->
+          <div class="signUp-func hidden">
+            <form
+              class="text-start px-5 d-flex flex-column justify-content-between align-items-center"
+              id="sign-form-2"
+            >
+              <div class="user-wmsu-email">
+                <label for="email2">WMSU email: </label><br />
+                <input
+                  type="email"
+                  class="user-email-inp"
+                  name="email2"
+                  id="email2"
+                  required
+                />
+              </div>
+              <div class="user-wmsu-password">
+                <label for="password2">Password: </label><br />
+                <input
+                  type="password"
+                  class="user-pass-inp"
+                  name="password2"
+                  id="password2"
+                  required
+                />
+              </div>
+              <div class="user-wmsu-password">
+                <label for="repassword">Re-enter password: </label><br />
+                <input
+                  type="password"
+                  class="user-pass-inp"
+                  name="repassword"
+                  id="repassword"
+                  required
+                />
+              </div>
+              <div class="user-wmsu-photo">
+                <label
+                  for="profilephoto"
+                  style="
+                    background: rgb(211, 213, 212);
+                    color: #555;
+                    padding: 0.5rem 1rem;
+                    cursor: pointer;
+                  "
+                  class="rounded"
+                  >Choose your profile photo</label
+                ><br />
+                <input
+                  type="file"
+                  class="user-photo-inp"
+                  name="profilephoto"
+                  id="profilephoto"
+                  value=""
+                  accept="image/*"
+                  required
+                />
+              </div>
+              <button
+                type="submit"
+                class="btn bg-greenn text-decoration-none px-5 py-3 mt-3 rounded-pill"
+                id="btn-signup"
+              >
+                <a
+                  href="{% url 'profilesetup' %}"
+                  class="text-white"
+                  style="font-size: 18px"
+                  >Create an account</a
+                >
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-5">
+        <p
+          class="txt-green text-center"
+          style="font-weight: 500; margin-bottom: 0.5rem"
+        >
+          <i>See Dashboard</i>
+        </p>
+        <div
+          class="d-flex flex-column justify-content-center align-items-center"
+          id="down-arrow"
+        >
+          <a href="#dashboard">
+            <img
+              src="{% static '../static/imgs/down-arrow.png' %}"
+              alt="down arrow"
+            />
+          </a>
+        </div>
+      </div>
+      <br /><br />
+      <div class="text-center" id="second">
+        <a href="{% url 'mainad' %}" class="txt-green">Admin Page</a><br />
+        <a href="{% url 'mainvtr' %}" class="txt-green">Voters Page</a>
+      </div>
+
+      <div id="dashboard">
+        <h1
+          class="display-5 mt-5 text-center"
+          style="font-weight: bold; color: rgb(80, 105, 94)"
+        >
+          DASHBOARD
+        </h1>
+        {% include 'dashboard.html' %}
+      </div>
+    </div>
+    {% endblock content%}
+    <script src="{% static '../static/bootstrap-5.1.3-dist/js/bootstrap.min.js' %}"></script>
+    <script src="{% static '../static/globaljs/home.js' %}"></script>
+  </body>
+</html>

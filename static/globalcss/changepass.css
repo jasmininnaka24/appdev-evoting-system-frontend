@@ -1,0 +1,45 @@
+
+form{
+  height: 80%;
+}
+
+.currentpass input,
+.newpass input,
+.confirmpass input{
+  width: 20rem;
+  /* padding: .3rem; */
+  background: transparent;
+  border: none;
+  border-bottom: rgb(86, 103, 95) solid 4px;
+  margin-bottom: 1rem;
+  outline: none;
+  color: rgb(86, 103, 95);
+  font-size: 18px;
+}
+.currentpass label,
+.newpass label,
+.confirmpass label{
+  color: rgb(86, 103, 95);
+  margin: .5rem auto;
+  font-size: 18px;
+  font-weight: bold;
+}
+#down-arrow{
+  cursor: pointer;
+}
+#down-arrow img{
+  position: relative;
+  width: 3rem;
+  height: 1.2rem;
+  margin: 0 auto;
+  transition: all 0.5s ease;
+}
+#down-arrow:hover img{
+  margin-top: .5rem;
+}
+input[type="file"] {
+  display: none;
+}
+.hidden{
+  display: none;
+}

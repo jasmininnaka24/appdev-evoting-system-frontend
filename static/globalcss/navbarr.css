@@ -1,0 +1,75 @@
+#menu-btn img {
+  width: 2.6rem;
+  height: 2rem;
+  cursor: pointer;
+}
+.navbar {
+  position: absolute;
+  width: 22rem;
+  height: 100%;
+  background: rgb(90, 108, 100);
+  /* background: pink; */
+  right: 0;
+  top: 0;
+  z-index: 100;
+}
+
+#menu-list{
+  margin: 0;
+  margin-top: 6rem;
+  padding: 0;
+  list-style: none;
+  width: 100%;
+  margin-top: -17rem;
+}
+#menu-list li {
+  font-size: 18px;
+  line-height: 4rem;
+  cursor: pointer;
+  letter-spacing: 3px;
+  font-weight: 700;
+  transition: all .5s ease;
+}
+#menu-list a {
+  text-decoration: none;
+  color: #fff;
+}
+
+#menu-list li:active, #menu-list li:hover, #menu-list li:focus,
+#menu-list a:active, #menu-list a:hover, #menu-list a:focus{
+  background: rgb(55, 77, 67);
+  color: #fff;
+}
+#logout{
+  bottom: 3rem;
+  text-align: center;
+  width: 80%;
+  margin: auto 10%;
+  transition: all .5s;
+  font-weight: 700;
+}
+#logout:hover{
+  background: rgb(211, 213, 212);
+  color: #333;
+}
+#logoutad{
+  transition: all .5s;
+}
+#logoutad:hover{
+  background: rgb(119, 151, 137);
+  color: #fff;
+}
+
+.close-modal{
+  position: absolute;
+  top: 2rem;
+  right: 16.5rem;
+  border: none;
+  background: #fff;
+  border-radius: 100px;
+  padding: 0 15px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #555;
+  font-weight: 600;
+} 

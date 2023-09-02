@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% load static %}
+    <link
+      rel="shortcut icon"
+      href="{% static '../static/imgs/logo.png' %}"
+      type="image/x-icon"
+    />
+    <title>E-Voting System</title>
+    <style>
+      .border-radius {
+        border-radius: 25px;
+      }
+      .box {
+        font-size: 1.2rem;
+        font-weight: 700;
+      }
+    </style>
+  </head>
+  <body>
+    {% include 'navbarvtr.html' %}
+    <div class="container">
+      <main
+        class="d-flex flex-md-row-reverse flex-column justify-content-evenly align-items-center mainn"
+      >
+        <h1
+          class="txt-green text-md-start text-center text-lg-start display-4 w-50 py-4 header-info"
+          style="font-weight: 700"
+        >
+          COLLEGE OF <br />
+          COMPUTING STUDIES <br />
+          E-VOTING SYSTEM
+        </h1>
+        <ul
+          class="link-boxes d-flex flex-column align-items-center justify-content-center list-unstyled w-50 text-center"
+        >
+          <a
+            href="{% url 'castvote' %}"
+            class="box bg-greenn txt-light text-decoration-none px-4 py-5 my-1 w-75 border-radius"
+            ><li>CAST VOTE</li></a
+          >
+          <a
+            href="{% url 'castedvotes' %}"
+            class="box bg-greenn txt-light text-decoration-none px-4 py-5 my-1 w-75 border-radius"
+            ><li>CASTED VOTES</li></a
+          >
+          <a
+            href="{% url 'candprf' %}"
+            class="box bg-greenn txt-light text-decoration-none px-4 py-5 my-1 w-75 border-radius"
+            ><li>CANDIDATES PROFILE</li></a
+          >
+        </ul>
+      </main>
+    </div>
+  </body>
+</html>

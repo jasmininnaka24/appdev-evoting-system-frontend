@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <section class="pb-4">
+      <div
+        class="selectingMayor d-flex flex-wrap justify-content-center gap-3 box"
+      >
+        <!-- candidate 1 -->
+        <section class="selected-candidate-card px-4 py-2" data-candidate="1">
+          <p class="m-0 txt-green voted-text hidden" style="font-weight: bold">
+            VOTED
+            <span
+              class="check rounded-pill bg-white px-1 txt-green"
+              style="font-weight: bold"
+              >✓</span
+            >
+          </p>
+          <img
+            src="{% static '../static/imgs/user.png' %}"
+            class="mt-1"
+            alt=""
+          />
+          <p
+            class="candidate-name pt-2 txt-green m-0"
+            style="font-weight: bold"
+          >
+            MAYOR 1
+          </p>
+          <p class="m-0" style="color: rgb(72, 93, 72); font-size: 14px">
+            <i>Partylist</i>
+          </p>
+        </section>
+
+        <!-- candidate 2 -->
+        <section class="selected-candidate-card px-4 py-2" data-candidate="2">
+          <p class="m-0 txt-green hidden" style="font-weight: bold">
+            VOTED
+            <span
+              class="check rounded-pill bg-white px-1 txt-green"
+              style="font-weight: bold"
+              >✓</span
+            >
+          </p>
+          <img
+            src="{% static '../static/imgs/user.png' %}"
+            class="mt-1"
+            alt=""
+          />
+          <p
+            class="candidate-name pt-2 txt-green m-0"
+            style="font-weight: bold"
+          >
+            MAYOR 1
+          </p>
+          <p class="m-0" style="color: rgb(72, 93, 72); font-size: 14px">
+            <i>Partylist</i>
+          </p>
+        </section>
+
+        <!-- candidate 3 -->
+        <section class="selected-candidate-card px-4 py-2" data-candidate="3">
+          <p class="m-0 mb-1 txt-green hidden" style="font-weight: bold">
+            VOTED
+            <span
+              class="check rounded-pill bg-white px-1 txt-green"
+              style="font-weight: bold"
+              >✓</span
+            >
+          </p>
+          <img src="{% static '../static/imgs/user.png' %}" alt="" />
+          <p
+            class="candidate-name pt-2 txt-green m-0"
+            style="font-weight: bold"
+          >
+            MAYOR 1
+          </p>
+          <p class="m-0" style="color: rgb(72, 93, 72); font-size: 14px">
+            <i>Partylist</i>
+          </p>
+        </section>
+      </div>
+    </section>
+  </body>
+</html>

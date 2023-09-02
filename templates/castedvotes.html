@@ -1,0 +1,194 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% load static %}
+    <link
+      rel="shortcut icon"
+      href="{% static '../static/imgs/logo.png' %}"
+      type="image/x-icon"
+    />
+    <title>E-Voting System</title>
+    <style>
+      .border-radius {
+        border-radius: 25px;
+        width: 30rem;
+        max-width: 90%;
+      }
+      .box {
+        background: rgb(55, 77, 67);
+        color: #fff;
+        line-height: 1;
+      }
+      .plist {
+        opacity: 0.5;
+      }
+      .position,
+      .cand-name {
+        text-transform: uppercase;
+      }
+      .cand-name {
+        /* letter-spacing: 2px; */
+        font-weight: bold;
+      }
+      .user-img {
+        width: 4.5rem;
+        /* border: #d5e9e0 5px double; */
+        object-fit: cover;
+      }
+      .position {
+        font-size: 1rem;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    {% include 'navbarvtr.html' %}
+    <main
+      class="container d-flex flex-column align-items-center justify-content-center"
+    >
+      <h1
+        class="display-6 mb-3"
+        style="font-weight: bold; color: rgb(80, 105, 94)"
+      >
+        CASTED VOTES
+      </h1>
+      <!-- mayor box -->
+      <section
+        id="mayorbox"
+        class="d-flex flex-md-row-reverse flex-column justify-content-around align-items-center gap-md-5 border-radius box py-3 my-1"
+      >
+        <div>
+          <img
+            class="user-img rounded-circle"
+            src="../static/imgs/user.png"
+            alt=""
+          />
+        </div>
+        <div class="text-md-start text-center text-lg-start">
+          <h5 class="mb-0 position">Mayor</h5>
+          <h3 class="m-0 cand-name">Candidate 1</h3>
+          <p class="m-0 plist" id="plistMayor"><i>Partylist</i></p>
+        </div>
+      </section>
+
+      <!-- vice-mayor box -->
+      <section
+        id="vicemayorbox"
+        class="d-flex flex-md-row-reverse flex-column justify-content-around align-items-center gap-md-5 border-radius box py-3 my-1"
+      >
+        <div>
+          <img
+            class="user-img rounded-circle"
+            src="../static/imgs/user.png"
+            alt=""
+          />
+        </div>
+        <div class="text-md-start text-center text-lg-start">
+          <h5 class="mb-0 position">Vice-Mayor</h5>
+          <h3 class="m-0 cand-name">Candidate 2</h3>
+          <p class="m-0 plist" id="plistVMayor"><i>Partylist</i></p>
+        </div>
+      </section>
+
+      <!-- senator box -->
+      <section
+        class="d-flex flex-md-row-reverse flex-column justify-content-around align-items-center gap-md-5 border-radius box py-3 my-1"
+      >
+        <div>
+          <img
+            class="user-img rounded-circle"
+            src="../static/imgs/user.png"
+            alt=""
+          />
+        </div>
+        <div class="text-md-start text-center text-lg-start">
+          <h5 class="mb-0 position">Senator</h5>
+          <h3 class="m-0 cand-name">Candidate 3</h3>
+          <p class="m-0 plist" id="plistSenator"><i>Partylist</i></p>
+        </div>
+      </section>
+
+      <!-- councilors box -->
+      <section class="box border-radius my-1">
+        <div>
+          <!-- IT councilor 1 -->
+          <div
+            class="d-flex flex-md-row-reverse flex-column justify-content-around align-items-center gap-md-5 py-3 my-1"
+          >
+            <div>
+              <img
+                class="user-img rounded-circle"
+                src="../static/imgs/user.png"
+                alt=""
+              />
+            </div>
+            <div class="text-md-start text-center text-lg-start">
+              <h5 class="mb-0 position">Councilor</h5>
+              <h3 class="m-0 cand-name">Candidate 3</h3>
+              <p class="m-0 plist" id="plistCouncilor1"><i>Partylist</i></p>
+            </div>
+          </div>
+          <!-- IT councilor 2 -->
+          <div
+            id="senatorbox"
+            class="d-flex flex-md-row-reverse flex-column justify-content-around align-items-center gap-md-5 py-3 my-1"
+          >
+            <div>
+              <img
+                class="user-img rounded-circle"
+                src="../static/imgs/user.png"
+                alt=""
+              />
+            </div>
+            <div class="text-md-start text-center text-lg-start">
+              <h5 class="mb-0 position">Councilor</h5>
+              <h3 class="m-0 cand-name">Candidate 4</h3>
+              <p class="m-0 plist" id="plistCouncilor2"><i>Partylist</i></p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <!-- CS councilor 1 -->
+          <div
+            class="d-flex flex-md-row-reverse flex-column justify-content-around align-items-center gap-md-5 py-3 my-1"
+          >
+            <div>
+              <img
+                class="user-img rounded-circle"
+                src="../static/imgs/user.png"
+                alt=""
+              />
+            </div>
+            <div class="text-md-start text-center text-lg-start">
+              <h5 class="mb-0 position">Councilor</h5>
+              <h3 class="m-0 cand-name">Candidate 5</h3>
+              <p class="m-0 plist" id="plistCouncilor3"><i>Partylist</i></p>
+            </div>
+          </div>
+          <!-- CS councilor 2 -->
+          <div
+            class="d-flex flex-md-row-reverse flex-column justify-content-around align-items-center gap-md-5 py-3 my-1"
+          >
+            <div>
+              <img
+                class="user-img rounded-circle"
+                src="../static/imgs/user.png"
+                alt=""
+              />
+            </div>
+            <div class="text-md-start text-center text-lg-start">
+              <h5 class="mb-0 position">Councilor</h5>
+              <h3 class="m-0 cand-name">Candidate 6</h3>
+              <p class="m-0 plist" id="plistCouncilor4"><i>Partylist</i></p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

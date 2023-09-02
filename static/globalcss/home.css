@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap');
+
+*{
+  font-family: 'Lato', sans-serif;
+}
+a{
+  text-decoration: none;
+}
+body{
+  background: rgb(245, 245, 245);
+}
+
+.txt-green{
+  color: rgb(74, 93, 85);
+}
+.txt-light{
+  color: rgb(127, 161, 146);
+}
+.bg-secondaryy{
+  background: rgb(245, 245, 245);
+}
+.bg-greenn{
+  background: rgb(55, 77, 67);
+  color: #fff;
+}
+.bg-greenn:hover{
+  background: rgb(86, 103, 95);
+  color: #fff;
+}
+.btn-greenn{
+  background: rgb(90, 108, 100);
+  color: #fff;
+}
+.btn-greenn:hover{
+  background: rgb(90, 108, 100);
+  color: #fff;
+}
+.bg-lightt{
+  background: rgb(211, 213, 212);
+  color: #333;
+}
+.btn-lightt{
+  background: rgb(211, 213, 212);
+  color: #333;
+}
+
+.overlay{
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0,0,0,0.7);
+  position: fixed;
+  backdrop-filter: blur(3px);
+  display: block;
+}
+
+.modal{
+  position: absolute;
+  left: 5%;
+  top: 10%;
+  background: rgb(116, 142, 117);
+  padding: 1.5rem;
+  border-radius: .5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  text-align: center;
+  width: 90%;
+  height: 85%;
+  display: block;
+}
+
+.hidden{
+  display: none;
+}
+
+@media (min-width: 40rem) {
+  .modal{
+    max-width: 30rem;
+    left: calc(50% - 15rem);
+  }
+  
+}
+.modal .close-modal{
+  position: absolute;
+  top: 1rem;
+  right: 2rem;
+  border: none;
+  background: #fff;
+  border-radius: 100px;
+  padding: 0 10px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #555;
+  font-weight: 600;
+}
+
+form{
+  height: 80%;
+}
+
+#sign-form-1 input,
+#sign-form-2 input{
+  width: 20rem;
+  /* padding: .3rem; */
+  background: transparent;
+  border: none;
+  border-bottom: #fff solid 2px;
+  margin-bottom: 1rem;
+  outline: none;
+  color: #fff;
+  font-size: 18px;
+}
+#sign-form-1 label,
+#sign-form-2 label{
+  color: #fff;
+  margin: .5rem auto;
+}
+#down-arrow{
+  cursor: pointer;
+}
+#down-arrow img{
+  position: relative;
+  width: 3rem;
+  height: 1.2rem;
+  margin: 0 auto;
+  transition: all 0.5s ease;
+}
+#down-arrow:hover img{
+  margin-top: 1rem;
+}
+input[type="file"] {
+  display: none;
+}
